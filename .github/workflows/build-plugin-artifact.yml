@@ -25,7 +25,7 @@ jobs:
       - name: Download Jenkins Plugin Installation Manager
         run: |
           curl -fsSL \
-            https://github.com/jenkinsci/plugin-installation-manager-tool/releases/latest/download/jenkins-plugin-manager-2.13.2.jar \
+            https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.14.0/jenkins-plugin-manager-2.14.0.jar \
             -o /usr/local/bin/jenkins-plugin-manager.jar
 
       - name: Install Jenkins plugins including dependencies
