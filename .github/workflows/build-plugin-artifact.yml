@@ -9,9 +9,9 @@ jobs:
   build-plugins:
     runs-on: ubuntu-latest
 
-    container:
-      image: jenkins/jenkins:2.555.1-lts
-      options: --user root
+#    container:
+#      image: jenkins/jenkins:2.555.1-lts
+#      options: --user root
 
     steps:
       - name: Checkout Repository
