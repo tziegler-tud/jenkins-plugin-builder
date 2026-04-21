@@ -19,8 +19,8 @@ jobs:
 
       - name: Install prerequisites
         run: |
-          apt-get update
-          apt-get install -y curl unzip zip
+          sudo apt-get update
+          sudo apt-get install -y curl unzip zip
 
       - name: Download Jenkins Plugin Installation Manager
         run: |
