@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-plugins:
+    runs-on: ubuntu-latest
+
+    container:
+      image: jenkins/jenkins:2.555.1-lts
+      options: --user root
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install prerequisites
+        run: |
+          apt-get update
+          apt-get install -y curl unzip zip
+
+      - name: Download Jenkins Plugin Installation Manager
+        run: |
+          curl -fsSL \
+            https://github.com/jenkinsci/plugin-installation-manager-tool/releases/latest/download/jenkins-plugin-manager-2.13.2.jar \
+            -o /usr/local/bin/jenkins-plugin-manager.jar
+
+      - name: Install Jenkins plugins including dependencies
+        run: |
+          mkdir -p /usr/share/jenkins/ref/plugins
+          java -jar /usr/local/bin/jenkins-plugin-manager.jar \
+            --plugin-file plugins.txt \
+            --plugin-download-directory /usr/share/jenkins/ref/plugins
+
+      - name: Create ZIP archive of plugins
+        run: |
+          cd /usr/share/jenkins/ref
+          zip -r /tmp/jenkins-plugins.zip plugins
+
+      - name: Upload plugins as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jenkins-plugins
+          path: /tmp/jenkins-plugins.zip
