@@ -1,3 +1,8 @@
-git:latest
-configuration-as-code:latest
-job-dsl:latest
+workflow-aggregator:608.v67378e9d3db_1
+git-client:6.1.1
+git:5.10.1
+gitea:273.vb_78d13f6d9a_d
+publish-over-ssh:1.25
+docker-plugin:1.6.2
+dashboard-view:2.558.v96b_901978e47
+matrix-auth:3.2.9
