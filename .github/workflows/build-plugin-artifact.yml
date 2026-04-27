@@ -33,7 +33,7 @@ jobs:
           mkdir -p /usr/share/jenkins/ref/plugins
           java -jar /usr/local/bin/jenkins-plugin-manager.jar \
             --plugin-file plugins.txt \
-            --plugin-download-directory /usr/share/jenkins/ref/plugins
+            --plugin-download-directory /usr/share/jenkins/ref/plugins \
             --jenkins-version 2.555
 
       - name: Create ZIP archive of plugins
