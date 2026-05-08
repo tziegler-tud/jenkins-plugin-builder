@@ -6,3 +6,4 @@ configuration-as-code:2077.v41f1011a_5110
 docker-plugin:1.6.2
 dashboard-view:2.558.v96b_901978e47
 matrix-auth:3.2.9
+ws-cleanup:0.49
