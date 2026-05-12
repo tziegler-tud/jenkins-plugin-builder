@@ -1,6 +1,6 @@
 dist:
   name: otelcol-obs-agent
-  description: minimalistic OTEL Collector Distribution used as agent for the IOE Observability Deployment
+  description: minimalistic OTEL Collector Distribution
   output_path: ./otelcol-obs-agent
   version: "0.0.1"
 
