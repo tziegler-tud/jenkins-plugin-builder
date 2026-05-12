@@ -1,0 +1,32 @@
+receivers:
+  prometheus:
+    config:
+      global:
+        scrape_interval: 30s
+  filelog:
+    include: ["/var/logs/*"]
+
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  otlphttp/metrics:
+    endpoint: 'http://localhost/api/v1/otlp'
+  otlphttp/logs:
+    endpoint: 'http://localhost:3100/otlp'
+  otlphttp/traces:
+    endpoint: 'http://localhost:3200/otlp'
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlphttp/traces]
+    metrics:
+      receivers: [prometheus]
+      exporters: [otlphttp/metrics]
+    logs:
+      receivers: [filelog]
+      exporters: [otlphttp/logs]
